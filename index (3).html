@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Bir Kaç Soru öyküşş ❄️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body{
+      margin:0;height:100vh;overflow:hidden;
+      background:linear-gradient(120deg,#0f2027,#203a43,#2c5364);
+      display:flex;align-items:center;justify-content:center;
+      font-family:Arial,sans-serif;color:#fff;text-align:center;
+    }
+    .card{
+      background:rgba(255,255,255,.1);
+      padding:30px;border-radius:18px;max-width:420px;
+      box-shadow:0 0 30px rgba(0,0,0,.4);z-index:2;
+    }
+    h1{font-size:30px;margin-bottom:10px}
+    p{font-size:18px;line-height:1.6}
+    .btns{margin-top:15px}
+    button{
+      padding:10px 18px;margin:6px;border:0;border-radius:999px;
+      cursor:pointer;font-size:16px
+    }
+    .yes{background:#4ade80}
+    .no{background:#f87171}
+    .snow{
+      position:fixed;top:-10px;z-index:1;user-select:none;
+      animation:fall linear infinite
+    }
+    @keyframes fall{to{transform:translateY(110vh)}}
+  </style>
+</head>
+<body>
+
+<div class="card" id="app">
+  <h1>Bir Kaç Soru öyküşş ❄️</h1>
+  <p id="q">Hazır mısın?</p>
+  <div class="btns">
+    <button class="yes" onclick="next()">Evet</button>
+    <button class="no" onclick="next()">Tabii ki</button>
+  </div>
+</div>
+
+<script>
+  // Sorular
+  const steps = [
+    "Beni güldürdüğün zamanları hatırlıyor musun?",
+    "Zor zamanda yanımda olduğun anlar oldu mu?",
+    "Bu yıl birlikte iyi anılar biriktirdik mi?",
+    "Yeni yılda da dostluğumuz sürsün mü?",
+    "Son bir şey söylemek istiyorum…"
+  ];
+  let i = 0;
+
+  function next(){
+    if(i < steps.length){
+      document.getElementById("q").innerHTML = steps[i];
+      i++;
+    } else {
+      document.getElementById("app").innerHTML = `
+        <h1>İyi Ki Varsın 💙</h1>
+        <p>
+          Bu yıl bana kattığın her şey için teşekkür ederim.<br><br>
+          Güldük, saçmaladık, bazen sustuk ama hep yan yanaydık.<br><br>
+          <b>İyi ki benim arkadaşımsın canım öyküşümm.</b>
+        </p>
+      `;
+    }
+  }
+
+  // Kar
+  for(let s=0;s<50;s++){
+    const d=document.createElement("div");
+    d.className="snow"; d.innerHTML="❄";
+    d.style.left=Math.random()*100+"vw";
+    d.style.fontSize=10+Math.random()*20+"px";
+    d.style.animationDuration=5+Math.random()*5+"s";
+    document.body.appendChild(d);
+  }
+</script>
+
+</body>
+</html>
